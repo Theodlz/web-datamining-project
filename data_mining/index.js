@@ -6,7 +6,7 @@ import fs from 'fs';
 
 const arrondissements = ['1er', '2eme', '3eme', '4eme', '5eme', '6eme', '7eme', '8eme', '9eme', '10eme', '11eme', '12eme', '13eme', '14eme', '15eme', '16eme', '17eme', '18eme', '19eme', '20eme'];
 
-// retrieve longitude   and latitue of paris arrondissement from 1 to 20
+// retrieve longitude   and latitude of paris arrondissement from 1 to 20
 function getLatLng(arrondissement) {
     return new Promise((resolve, reject) => {
         client.geocode({
@@ -51,34 +51,47 @@ async function getPlaces(type, lat, lng) {
 }
 
 // loop on all arrondissement of Paris from arrondissement and update longitude and latitude
-async function getPlacesByArrondissement(type='restaurant') {
-    let all_restaurants = [];
-    for (let i in arrondissements) {
-        console.log(`getting ${type} in ${arrondissements[i]} arrondissement`);
-        const latLng = await getLatLng(`${arrondissements[i]} arrondissement de Paris`);
-        const restaurants = await getPlaces(type, latLng.lat, latLng.lng);
-        all_restaurants = all_restaurants.concat(restaurants);
+async function getPlacesByArrondissement(type='restaurant', verbose=true) {
+    let all_places = [];
+    if(verbose) {
+        process.stdout.cursorTo(65);
+        process.stdout.write('['+ ' '.repeat(arrondissements.length) + ']');
+        process.stdout.cursorTo(66);
     }
-    return all_restaurants;
+    for (let i in arrondissements) {
+        if(verbose) {
+            process.stdout.write('\u258B');
+        }
+        const latLng = await getLatLng(`${arrondissements[i]} arrondissement de Paris`);
+        const places = await getPlaces(type, latLng.lat, latLng.lng);
+        all_places = all_places.concat(places);
+    }
+    process.stdout.write('\n');
+    return all_places;
 }
 
 const types = ['restaurant', 'cafe', 'bar', 'bakery']
 async function getPlacesByType(types=['restaurant']) {
-    let full_restaurants = [];
+    let full_places = [];
     for (let i in types) {
-        const latLng = await getLatLng(`${arrondissements[i]} arrondissement de Paris`);
-        const restaurants = await getPlacesByArrondissement(types[i], latLng.lat, latLng.lng);
-        full_restaurants = full_restaurants.concat(restaurants);
+        
+        process.stdout.write(`${parseInt(i)+1}. Retrieving ${types[i]}s in all 20 arrondissements of Paris`);
+        const places = await getPlacesByArrondissement(types[i], true);
+        full_places = full_places.concat(places);
     }
-    return full_restaurants;
+    return full_places;
 }
 
-const full_restaurants = await getPlacesByType(types)
-
-
-fs.writeFile('restaurants.json', JSON.stringify(full_restaurants, '', 2) , function (err) {
-    if (err) throw err;
-    console.log(`saved ${full_restaurants.length} restaurants in restaurants.json`);
+// function to save the data in a json file
+function saveData(data, fileName) {
+    fs.writeFile(fileName, JSON.stringify(data, '', 2), function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(`Saved ${data.length} places in ${fileName}`);
+        }
+    });
 }
-);
 
+const full_places = await getPlacesByType(types)
+saveData(full_places, 'full_places.json');

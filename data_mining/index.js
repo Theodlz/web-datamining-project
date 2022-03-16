@@ -1,97 +1,48 @@
 import {Client} from "@googlemaps/google-maps-services-js";
+import 'dotenv/config'
 
-const client = new Client({key: 'AIzaSyA2CXzg9NRsFQMaQXz7qqH7NLoXo-pCPyo'});
-
+console.log(process.env.MAPS_API_KEY);
+const client = new Client({key: process.env.MAPS_API_KEY});
+    
 import fs from 'fs';
-
-const arrondissements = ['1er', '2eme', '3eme', '4eme', '5eme', '6eme', '7eme', '8eme', '9eme', '10eme', '11eme', '12eme', '13eme', '14eme', '15eme', '16eme', '17eme', '18eme', '19eme', '20eme'];
-
-// retrieve longitude   and latitude of paris arrondissement from 1 to 20
-function getLatLng(arrondissement) {
-    return new Promise((resolve, reject) => {
-        client.geocode({
-            params: {
-                address: arrondissement,
-                key: 'AIzaSyA2CXzg9NRsFQMaQXz7qqH7NLoXo-pCPyo'
-            }
-        }).then(function (response) {
-            resolve(response.data.results[0].geometry.location);
-        }).catch(function (err) {
-            reject(err);
-        });
-    });
-}
-
 import Axios from 'axios';
-async function getPlaces(type, lat, lng) {
-    const key = 'AIzaSyA2CXzg9NRsFQMaQXz7qqH7NLoXo-pCPyo';
+
+async function getPlaceDetails(id){
+    const key = process.env.MAPS_API_KEY;
+    console.log(key);
     var config = {
         method: 'get',
-        url: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
+        url: 'https://maps.googleapis.com/maps/api/place/details/json',
         params: {
-            input: '',
-            inputtype: 'textquery',
-            fields: 'formatted_address,geometry,icon,id,name,permanently_closed,photos,place_id,plus_code,types',
+            place_id: id,
+            fields: 'opening_hours',
             key: key,
-            // use lat and long to get the restaurant in paris
-            location: lat + ',' + lng,
-            radius: '800',
-            type: type
         }
     };
 
     return await Axios(config).then(function (response) {
-        return response.data.results;
+        console.log(response.data);
+        return response.data.result;
     }
     ).catch(function (error) {
         console.log(error);
     }
     );
-
 }
 
-// loop on all arrondissement of Paris from arrondissement and update longitude and latitude
-async function getPlacesByArrondissement(type='restaurant', verbose=true) {
-    let all_places = [];
-    if(verbose) {
-        process.stdout.cursorTo(65);
-        process.stdout.write('['+ ' '.repeat(arrondissements.length) + ']');
-        process.stdout.cursorTo(66);
-    }
-    for (let i in arrondissements) {
-        if(verbose) {
-            process.stdout.write('\u258B');
+async function main() {
+    let data = JSON.parse(fs.readFileSync('full_places.json', 'utf8'));
+    data = data.filter(place => place.business_status === 'OPERATIONAL');
+    for(let i = 0; i < data.length; i++){
+        if(data[i].business_status === 'OPERATIONAL'){
+            const place_id = data[i].place_id;
+            const details = await getPlaceDetails(place_id);
+            data[i].opening_hours = details.opening_hours;
         }
-        const latLng = await getLatLng(`${arrondissements[i]} arrondissement de Paris`);
-        const places = await getPlaces(type, latLng.lat, latLng.lng);
-        all_places = all_places.concat(places);
     }
-    process.stdout.write('\n');
-    return all_places;
+    data = data.filter(place => place.opening_hours !== undefined);
+    fs.writeFileSync('full_places_with_opening_hours.json', JSON.stringify(data, '', 2));
 }
 
-const types = ['restaurant', 'cafe', 'bar', 'bakery']
-async function getPlacesByType(types=['restaurant']) {
-    let full_places = [];
-    for (let i in types) {
-        
-        process.stdout.write(`${parseInt(i)+1}. Retrieving ${types[i]}s in all 20 arrondissements of Paris`);
-        const places = await getPlacesByArrondissement(types[i], true);
-        full_places = full_places.concat(places);
-    }
-    return full_places;
-}
-
-// function to save the data in a json file
-function saveData(data, fileName) {
-    fs.writeFile(fileName, JSON.stringify(data, '', 2), function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(`Saved ${data.length} places in ${fileName}`);
-        }
-    });
-}
-
-const full_places = await getPlacesByType(types)
-saveData(full_places, 'full_places.json');
+// load data from json file
+main();

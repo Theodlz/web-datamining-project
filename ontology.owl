@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#"
+     xml:base="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#hasAdress -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#hasAdress">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Adress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#hasOpenPeriod -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#hasOpenPeriod">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Opening_hours"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#hasOpeningHours -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#hasOpeningHours">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Opening_hours"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#business_status -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#business_status">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#city -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#city">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#day_close -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#day_close">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#day_open -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#day_open">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#formated_address -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#formated_address">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#lat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#lat">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#lng -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#lng">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Adress"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#place_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#place_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#postal_code -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#postal_code">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#price_level -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#price_level">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Food_related"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#rating -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#rating">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#rating_score -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#rating_score">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#rating"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#street_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#street_name">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#street_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#street_number">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#time_close -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#time_close">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#time_open -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#time_open">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#user_ratings_total -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#user_ratings_total">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#rating"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Adress -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Adress"/>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Bar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Bar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Food_related"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Cafe -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Cafe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Food_related"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Food_related -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Food_related">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Open_period"/>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Opening_hours -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Opening_hours"/>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Point_Of_Interest"/>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Restaurant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Restaurant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#Food_related"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

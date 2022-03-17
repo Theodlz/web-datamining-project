@@ -20,9 +20,23 @@ import SearchBar from "material-ui-search-bar";
 
 import placeLogo from './data/restaurant.svg';
 import places from './data/places.json'
+// -------------------------------------------------------------------------------------------------
+//  ALL THIS TO BE REPLACED WITH SPARQL QUERIES
 places = places.filter((place, index, self) => index === self.findIndex((t) => (t.place_id === place.place_id)))
 places = places.filter(place => place.name && place.formatted_address && place.geometry.location);
-// get list of types from places
+// sort places alphabetically by name
+places = places.sort((a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+});
+// -------------------------------------------------------------------------------------------------
+// places = places.splice(0, 20);
+// get list of types from places => TO BE REPLACED WITH SPARQL QUERY
 const types = new Set();
 places.forEach(place => {
   place.types.forEach(type => types.add(type));
@@ -39,47 +53,51 @@ function App() {
   });
 
   const [placesList, setPlacesList] = useState([...places].splice(0,10));
-  const [selectedplace, setSelectedplace] = useState(null);
+  const [selectedplace, setSelectedplace] = useState({});
   const [page, setPage] = useState(0);
   const [nbPages, setNbPages] = useState(Math.ceil(places.length / 10));
   const [arrondissement, setArrondissement] = useState('');
   const [type, setType] = useState('All');
   const [searched, setSearched] = useState("");
+  const [filteredPlaces, setFilteredPlaces] = useState(places);
 
   const requestSearch = (query) => {
+  // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     if (type === 'All') {
       setPage(0);
       setNbPages(Math.ceil(places.length / 10));
-      const filteredPlaces = [...places].filter((place) => {
+      setFilteredPlaces([...places].filter((place) => {
         return place.name.toLowerCase().includes(query.toLowerCase());
-      });
-      setPlacesList(filteredPlaces.splice(page*10, 10));
+      }));
+      setPlacesList([...places].filter((place) => {
+        return place.name.toLowerCase().includes(query.toLowerCase());
+      }).splice(page*10, 10));
     } else {
-      const filteredPlaces = [...places].filter(place => place.types.includes(type)).filter((place) => {
+      setFilteredPlaces([...places].filter(place => place.types.includes(type)).filter((place) => {
         return place.name.toLowerCase().includes(query.toLowerCase());
-      });
+      }));
       setNbPages(Math.ceil(filteredPlaces.length / 10));
-      setPlacesList(filteredPlaces.splice(page*10,10));
+      setPlacesList([...places].filter(place => place.types.includes(type)).filter((place) => {
+        return place.name.toLowerCase().includes(query.toLowerCase());
+      }).splice(page*10,10));
     }
   }
 
   const cancelSearch = () => {
+    // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setSearched("");
     requestSearch(searched);
   };
 
   const handleChangePage = (event) => {
+    // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setPage(event.target.value);
-    if (type === 'All') {
-      setNbPages(Math.ceil(places.length / 10));
-      setPlacesList([...places].splice(event.target.value*10, 10));
-    } else {
-      setNbPages(Math.ceil(placesList.length / 10));
-      setPlacesList([...places].filter(place => place.types.includes(type)).splice(event.target.value*10, 10));
-    }
+    setNbPages(Math.ceil(places.length / 10));
+    setPlacesList([...filteredPlaces].splice(event.target.value*10, 10));
   };
 
   const handleChangeArrondissement = (event) => {
+    // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setArrondissement(event.target.value);
     if (type === 'All') {
       setNbPages(Math.ceil(places.length / 10));
@@ -93,36 +111,34 @@ function App() {
   };
 
   const handleChangeType = (event) => {
+    // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setType(event.target.value);
     if (event.target.value === 'All') {
       setNbPages(Math.ceil(places.length / 10));
       setPage(0);
-      setPlacesList([...places].splice(page*10, 10));
+      setFilteredPlaces([...places]);
+      setPlacesList([...filteredPlaces].splice(page*10, 10));
     } else {
-      console.log(event.target.value);
       setNbPages(Math.ceil([...places].filter(place => place.types.includes(event.target.value)).length / 10));
       setPage(0);
-      setPlacesList([...places].filter(place => place.types.includes(event.target.value)).splice(page*10, 10));
+      setFilteredPlaces([...places].filter(place => place.types.includes(event.target.value)));
+      setPlacesList([...filteredPlaces].splice(page*10, 10));
     }
   };
 
   function handleClick(place) {
-    if(selectedplace) {
-      setSelectedplace(null);
-    } else {
       setSelectedplace(place);
-    }
+  }
+
+  function handleClickClose() {
+      setSelectedplace({});
   }
 
   function placeInfo(place) {
-    return (
-      <div>
-        <p>{place.formatted_address}</p>
-      </div>
-    );
+    // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
+    return place.formatted_address
   }
   return (
-    console.log(placesList),
     <div className="App">
       <div style={{width:'25vw', height:'90vh'}}>
         <Paper>
@@ -139,7 +155,7 @@ function App() {
                 >
                 {
                   Array.from(Array(nbPages).keys()).map(page => (
-                    <MenuItem value={page}>{page+1}</MenuItem>
+                    <MenuItem key={page} value={page}>{page+1}</MenuItem>
                   ))
                 }
               </Select>
@@ -155,7 +171,7 @@ function App() {
                 >
                 {
                   Array.from(types).map(type => (
-                    <MenuItem value={type}>{type}</MenuItem>
+                    <MenuItem key={type} value={type}>{type}</MenuItem>
                   ))
                 }
               </Select>
@@ -168,10 +184,10 @@ function App() {
           />
           <List className='place-list'>
           {placesList.map(place => (
-            <ListItemButton className='info' onClick={() => handleClick(place)}>
-              <ListItemText primary={place.name} />
+            <ListItemButton key={place.place_id} className='info' onClick={() => handleClick(place)}>
+              <ListItemText key={place.place_id + 'name'} primary={place.name} />
             { selectedplace === place && (
-              <ListItemText secondary={placeInfo(place)} />
+              <ListItemText key={place.place_id + 'description'} secondary={placeInfo(place)} />
             )}
             </ListItemButton>
           ))}
@@ -189,20 +205,39 @@ function App() {
           }}
           >
           <div style={{width:'100vw', height:'100vh'}}>
-            {placesList.map(place => (
-                <Marker
-                  key={place.place_id}
-                  latitude={place.geometry.location.lat}
-                  longitude={place.geometry.location.lng}
-                >
-                  <button className='marker-btn' onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedplace(place);
-                  }}>
-                    <p>{place.name}</p>
-                    <img src={placeLogo} alt="place Icon"/>
-                  </button>
-                </Marker>
+            {filteredPlaces.map(place => (
+              <div key={place.place_id}>
+                  <Marker
+                    latitude={place.geometry.location.lat}
+                    longitude={place.geometry.location.lng}
+                  >
+                  <p
+                  role='img'
+                  onClick={() => handleClick(place)}
+                  className="cursor-pointer text-2xl animate-bounce"
+                  aria-label='push-pin'
+                  >📍</p>
+                  </Marker>
+                  { selectedplace.place_id === place.place_id ? (
+                    console.log(selectedplace.place_id === place.place_id),
+                    <Popup
+                      latitude={place.geometry.location.lat}
+                      longitude={place.geometry.location.lng}
+                      closeOnClick={false}
+                      onClose={() => handleClickClose()}
+                      onOpen={() => handleClick(place)}
+                      >
+                        <div className='popup'>
+                          <h2>{place.name}</h2>
+                          <p>{placeInfo(place)}</p>
+                        </div>
+
+                      </Popup>
+                  ) : null}
+                      
+                </div>
+                
+
             ))}
               
           </div>

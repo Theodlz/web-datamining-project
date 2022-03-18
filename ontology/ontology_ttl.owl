@@ -1,0 +1,251 @@
+@prefix : <http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants> .
+
+<http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasAddress
+:hasAddress rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isAddressOf ;
+            rdfs:domain :Point_Of_Interest ;
+            rdfs:range :Address .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpenPeriod
+:hasOpenPeriod rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isOpenPeriodOf ;
+               rdfs:domain :Opening_hours ;
+               rdfs:range :Open_period .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours
+:hasOpeningHours rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :isOpeningHoursOf ;
+                 rdfs:domain :Point_Of_Interest ;
+                 rdfs:range :Opening_hours .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf
+:isAddressOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpenPeriodOf
+:isOpenPeriodOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf
+:isOpeningHoursOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#business_status
+:business_status rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Point_Of_Interest ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#city
+:city rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf :location ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#day_close
+:day_close rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Open_period ;
+           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#day_open
+:day_open rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Open_period ;
+          rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#formated_address
+:formated_address rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :location ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lat
+:lat rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf :location ;
+     rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lng
+:lng rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf :location ;
+     rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location
+:location rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Address .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Point_Of_Interest ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#place_id
+:place_id rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Point_Of_Interest ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#postal_code
+:postal_code rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :location ;
+             rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#price_level
+:price_level rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Food_related ;
+             rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating
+:rating rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Point_Of_Interest .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating_score
+:rating_score rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :rating ;
+              rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_name
+:street_name rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :location ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_number
+:street_number rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :location ;
+               rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#time_close
+:time_close rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Open_period ;
+            rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#time_open
+:time_open rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Open_period ;
+           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#user_ratings_total
+:user_ratings_total rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :rating ;
+                    rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address
+:Address rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Bar
+:Bar rdf:type owl:Class ;
+     rdfs:subClassOf :Food_related .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Cafe
+:Cafe rdf:type owl:Class ;
+      rdfs:subClassOf :Food_related .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Food_related
+:Food_related rdf:type owl:Class ;
+              rdfs:subClassOf :Point_Of_Interest .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period
+:Open_period rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours
+:Opening_hours rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest
+:Point_Of_Interest rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Restaurant
+:Restaurant rdf:type owl:Class ;
+            rdfs:subClassOf :Food_related .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes
+:Les_Bacchantes rdf:type owl:NamedIndividual ,
+                         :Restaurant ;
+                :hasAddress :les_bacchantes_adress ;
+                :hasOpeningHours :les_bacchantes_opening_hours ;
+                :business_status "OPERATIONAL" ;
+                :name "Les Bacchantes" ;
+                :place_id "ChIJpT1j9zNu5kcRQ9Nz9W8sXwQ" ;
+                :price_level 2 ;
+                :rating_score 4.3 ;
+                :user_ratings_total 547 .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_adress
+:les_bacchantes_adress rdf:type owl:NamedIndividual ,
+                                :Address ;
+                       :isAddressOf :Les_Bacchantes ;
+                       :city "Paris" ;
+                       :formated_address "21 Rue de Caumartin, 75009 Paris" ;
+                       :lat 48.8714616 ;
+                       :lng 2.3280306 ;
+                       :postal_code 75009 ;
+                       :street_name "Rue de Caumartin" ;
+                       :street_number 21 .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_open_period
+:les_bacchantes_open_period rdf:type owl:NamedIndividual ,
+                                     :Open_period ;
+                            :isOpenPeriodOf :les_bacchantes_opening_hours ;
+                            :day_close 1 ;
+                            :day_open 1 ;
+                            :time_close 1500 ;
+                            :time_open 1200 .
+
+
+###  http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours
+:les_bacchantes_opening_hours rdf:type owl:NamedIndividual ,
+                                       :Opening_hours ;
+                              :hasOpenPeriod :les_bacchantes_open_period ;
+                              :isOpeningHoursOf :Les_Bacchantes .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

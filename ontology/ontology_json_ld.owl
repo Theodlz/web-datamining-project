@@ -1,0 +1,342 @@
+[ {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Bar",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Food_related"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Cafe",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Food_related"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Food_related",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Restaurant" ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#business_status" : [ {
+    "@value" : "OPERATIONAL"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasAddress" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_adress"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#name" : [ {
+    "@value" : "Les Bacchantes"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#place_id" : [ {
+    "@value" : "ChIJpT1j9zNu5kcRQ9Nz9W8sXwQ"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#price_level" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "2"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating_score" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "@value" : "4.3"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#user_ratings_total" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "547"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Restaurant",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Food_related"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#business_status",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#city",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#day_close",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#day_open",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#formated_address",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasAddress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpenPeriod",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpenPeriodOf"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpenPeriodOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lat",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_adress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address" ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#city" : [ {
+    "@value" : "Paris"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#formated_address" : [ {
+    "@value" : "21 Rue de Caumartin, 75009 Paris"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lat" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "@value" : "48.8714616"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lng" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "@value" : "2.3280306"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#postal_code" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "75009"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_name" : [ {
+    "@value" : "Rue de Caumartin"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_number" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "21"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_open_period",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period" ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#day_close" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#day_open" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpenPeriodOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#time_close" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1500"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#time_open" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1200"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours" ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpenPeriod" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_open_period"
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lng",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#place_id",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#postal_code",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#price_level",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Food_related"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating_score",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_number",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#time_close",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#time_open",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Open_period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#user_ratings_total",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#int"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating"
+  } ]
+} ]

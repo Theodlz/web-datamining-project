@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants">
+    <Prefix name="" IRI="http://www.semanticweb.org/paulm/ontologies/2022/2/untitled-ontology-7#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Address"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cafe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Food_related"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Open_period"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Opening_hours"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Point_Of_Interest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Restaurant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAddress"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOpenPeriod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOpeningHours"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAddressOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isOpenPeriodOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isOpeningHoursOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#business_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#city"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#day_close"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#day_open"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#formated_address"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lng"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#place_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#postal_code"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#price_level"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#rating"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#rating_score"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#street_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#street_number"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#time_close"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#time_open"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#user_ratings_total"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#les_bacchantes_opening_hours"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Bar"/>
+        <Class IRI="#Food_related"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cafe"/>
+        <Class IRI="#Food_related"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Food_related"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Restaurant"/>
+        <Class IRI="#Food_related"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Restaurant"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Address"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Open_period"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Opening_hours"/>
+        <NamedIndividual IRI="#les_bacchantes_opening_hours"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOpeningHours"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <NamedIndividual IRI="#les_bacchantes_opening_hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressOf"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOpenPeriodOf"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+        <NamedIndividual IRI="#les_bacchantes_opening_hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOpenPeriod"/>
+        <NamedIndividual IRI="#les_bacchantes_opening_hours"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOpeningHoursOf"/>
+        <NamedIndividual IRI="#les_bacchantes_opening_hours"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#business_status"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <Literal>OPERATIONAL</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#name"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <Literal>Les Bacchantes</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#place_id"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <Literal>ChIJpT1j9zNu5kcRQ9Nz9W8sXwQ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#price_level"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#rating_score"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">4.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#user_ratings_total"/>
+        <NamedIndividual IRI="#Les_Bacchantes"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">547</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#city"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal>Paris</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#formated_address"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal>21 Rue de Caumartin, 75009 Paris</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#lat"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">48.8714616</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#lng"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2.3280306</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#postal_code"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">75009</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#street_name"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal>Rue de Caumartin</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#street_number"/>
+        <NamedIndividual IRI="#les_bacchantes_adress"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">21</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#day_close"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#day_open"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#time_close"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1500</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#time_open"/>
+        <NamedIndividual IRI="#les_bacchantes_open_period"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1200</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasAddress"/>
+        <ObjectProperty IRI="#isAddressOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasOpenPeriod"/>
+        <ObjectProperty IRI="#isOpenPeriodOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasOpeningHours"/>
+        <ObjectProperty IRI="#isOpeningHoursOf"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAddress"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOpenPeriod"/>
+        <Class IRI="#Opening_hours"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOpeningHours"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAddress"/>
+        <Class IRI="#Address"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOpenPeriod"/>
+        <Class IRI="#Open_period"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOpeningHours"/>
+        <Class IRI="#Opening_hours"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#city"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#formated_address"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#lat"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#lng"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#postal_code"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#rating_score"/>
+        <DataProperty IRI="#rating"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#street_name"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#street_number"/>
+        <DataProperty IRI="#location"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#user_ratings_total"/>
+        <DataProperty IRI="#rating"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#business_status"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#day_close"/>
+        <Class IRI="#Open_period"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#day_open"/>
+        <Class IRI="#Open_period"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#location"/>
+        <Class IRI="#Address"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#name"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#place_id"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#price_level"/>
+        <Class IRI="#Food_related"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#rating"/>
+        <Class IRI="#Point_Of_Interest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#time_close"/>
+        <Class IRI="#Open_period"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#time_open"/>
+        <Class IRI="#Open_period"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#business_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#city"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#day_close"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#day_open"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#formated_address"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#lat"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#lng"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#place_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#postal_code"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#price_level"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#rating_score"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#street_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#street_number"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#time_close"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#time_open"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#user_ratings_total"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

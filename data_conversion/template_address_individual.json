@@ -1,0 +1,32 @@
+{
+    "@id" : "",
+    "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address" ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#city" : [ {
+      "@value" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#formatted_address" : [ {
+      "@value" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf" : [ {
+      "@id" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lat" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+      "@value" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lng" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+      "@value" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#postal_code" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_name" : [ {
+      "@value" : ""
+    } ],
+    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_number" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : ""
+    } ]
+  }

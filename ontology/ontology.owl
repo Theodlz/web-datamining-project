@@ -336,6 +336,7 @@
     <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Cafe"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Restaurant"/>
         <Final_project_restaurants:hasAddress rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_address"/>
         <Final_project_restaurants:hasOpeningHours rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours"/>

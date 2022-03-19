@@ -23,36 +23,6 @@
     "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"
   } ]
 }, {
-  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Restaurant" ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#business_status" : [ {
-    "@value" : "OPERATIONAL"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasAddress" : [ {
-    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_address"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours" : [ {
-    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#name" : [ {
-    "@value" : "Les Bacchantes"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#place_id" : [ {
-    "@value" : "ChIJpT1j9zNu5kcRQ9Nz9W8sXwQ"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#price_level" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
-    "@value" : "2"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating_score" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
-    "@value" : "4.3"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#user_ratings_total" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
-    "@value" : "547"
-  } ]
-}, {
   "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
@@ -138,61 +108,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#location"
-  } ]
-}, {
-  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_address",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address" ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#city" : [ {
-    "@value" : "Paris"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf" : [ {
-    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lat" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
-    "@value" : "48.8714616"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lng" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
-    "@value" : "2.3280306"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#postal_code" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
-    "@value" : "75009"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_name" : [ {
-    "@value" : "Rue de Caumartin"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#street_number" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
-    "@value" : "21"
-  } ]
-}, {
-  "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#les_bacchantes_opening_hours",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours" ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#friday" : [ {
-    "@value" : "12:00 – 3:00 PM, 6:00 PM – 12:00 AM"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf" : [ {
-    "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Les_Bacchantes"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#monday" : [ {
-    "@value" : "12:00 – 3:00 PM, 6:00 PM – 12:00 AM"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#saturday" : [ {
-    "@value" : "12:00 – 3:00 PM, 6:00 PM – 12:00 AM"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#sunday" : [ {
-    "@value" : "Closed"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#thursday" : [ {
-    "@value" : "12:00 – 3:00 PM, 6:00 PM – 12:00 AM"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#tuesday" : [ {
-    "@value" : "12:00 – 3:00 PM, 6:00 PM – 12:00 AM"
-  } ],
-  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#wednesday" : [ {
-    "@value" : "12:00 – 3:00 PM, 6:00 PM – 12:00 AM"
   } ]
 }, {
   "@id" : "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#lng",

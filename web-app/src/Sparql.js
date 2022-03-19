@@ -1,5 +1,4 @@
 const d3  = require('d3-sparql')
-const fetch = require('isomorphic-fetch')
 
 const endpoint = 'http://localhost:3030/poiparis/sparql'
 
@@ -22,7 +21,7 @@ function getPlaces(type="All", sorting="", page, nbByPage) {
         ?x ns:name ?name .
         ?x ns:rating_score ?rating .
         ?x ns:hasAddress ?adresseClass .
-        ?adresseClass ns:formated_address ?adresse .
+        ?adresseClass ns:formatted_address ?adresse .
         ?adresseClass ns:lat ?lat .
         ?adresseClass ns:lng ?lng .
         }
@@ -35,7 +34,7 @@ function getPlaces(type="All", sorting="", page, nbByPage) {
         ?x ns:name ?name .
         ?x ns:rating_score ?rating .
         ?x ns:hasAddress ?adresseClass .
-        ?adresseClass ns:formated_address ?adresse .
+        ?adresseClass ns:formatted_address ?adresse .
         ?adresseClass ns:lat ?lat .
         ?adresseClass ns:lng ?lng .
         }
@@ -65,6 +64,7 @@ function getPlaces(type="All", sorting="", page, nbByPage) {
       default:
         break;
     }
+    console.log(query);
     d3.sparql(endpoint, query).then(function(data) {
         console.log(data);
       })
@@ -72,7 +72,9 @@ function getPlaces(type="All", sorting="", page, nbByPage) {
         if (nbByPage && page) {
           return data.splice(page*nbByPage, nbByPage);
         } else {
-          return data;
+          // delete duplicates in the data using the place_id
+          let unique = data.filter((v, i, a) => a.findIndex(t => (t["place_id"] === v["place_id"])) === i);
+          return unique;
         }
       })
   }

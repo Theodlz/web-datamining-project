@@ -31,9 +31,11 @@ import {getPlaces} from './Sparql.js';
 // places = places.splice(0, 20);
 // get list of types from places => TO BE REPLACED WITH SPARQL QUERY
 const types = new Set();
-types.add('Restaurant');
 types.add('All');
-
+types.add('Restaurant');
+types.add('Bar');
+types.add('Bakery');
+types.add('Cafe');
 const sortings = new Set();
 sortings.add('None');
 sortings.add('rating desc');
@@ -101,22 +103,22 @@ function App() {
   const handleChangeType = (event) => {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setType(event.target.value);
-    getPlaces(type, sorting).then(data => {
+    getPlaces(event.target.value, sorting).then(data => {
       setNbPages(Math.ceil(data.length / 10));
       setFilteredPlaces([...data]);
       setPage(0);
-      setPlacesList([...data].splice(page*10, 10));
+      setPlacesList([...data].splice(0, 10));
     });
   };
 
   const handleChangeSort = (event) => {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setSorting(event.target.value);
-    getPlaces(type, sorting).then(data => {
+    getPlaces(type, event.target.value).then(data => {
       setNbPages(Math.ceil(data.length / 10));
       setFilteredPlaces([...data]);
       setPage(0);
-      setPlacesList([...data].splice(page*10, 10));
+      setPlacesList([...data].splice(0, 10));
     });
   };
 

@@ -274,7 +274,14 @@
 
     <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isAddressOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
@@ -304,13 +311,36 @@
 
     <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Point_Of_Interest">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasAddress"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Address"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 

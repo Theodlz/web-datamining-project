@@ -279,6 +279,8 @@
                 <owl:someValuesFrom rdf:resource="http://schema.onki.fi/poi#PlaceOfInterest"/>
             </owl:Restriction>
         </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://schema.onki.fi/poi#PlaceOfInterest"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"/>
     </owl:Class>
     
 
@@ -300,6 +302,7 @@
                 <owl:onClass rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"/>
             </owl:Restriction>
         </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours"/>
     </owl:Class>
     
 
@@ -309,6 +312,14 @@
     <owl:Class rdf:about="http://schema.onki.fi/poi#PointOfInterest">
         <rdfs:subClassOf rdf:resource="http://schema.onki.fi/poi#PlaceOfInterest"/>
         <rdfs:comment xml:lang="fi">Kiinnostava kohde, johon liittyy pistemäinen paikkatieto.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Bakery -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Bakery">
+        <rdfs:subClassOf rdf:resource="http://schema.onki.fi/poi#PointOfInterest"/>
     </owl:Class>
     
 

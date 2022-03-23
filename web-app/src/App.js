@@ -24,8 +24,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import formatStringToHtml from 'format-string-to-html'
 import placeLogo from './data/restaurant.svg';
-import {getPlaces} from './Sparql.js';
-//let places = [];
+import {getPlaces, getPlacesJsonLD} from './Sparql.js';
 
 import {getDirections} from './Directions.js';
 import {getWeather} from './Weather.js';
@@ -59,7 +58,7 @@ function App() {
     zoom: 15
   });
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [placesList, setPlacesList] = useState([]);
   const [selectedplace, setSelectedplace] = useState({});
   const [page, setPage] = useState(0);
@@ -76,8 +75,11 @@ function App() {
 
   const [weather, setWeather] = useState(null);
 
+  const [jsonLD, setJsonLD] = useState(null);
 
-  if (!isLoaded && placesList.length === 0) {
+
+  if (isLoading) {
+    setIsLoading(false);
     getPlaces().then(data => {
       setPlacesList([...data].splice(0,10));
       setNbPages(Math.ceil(data.length / 10));
@@ -86,6 +88,9 @@ function App() {
         setWeather(data);
       });
       setIsLoaded(true);
+    });
+    getPlacesJsonLD().then(data => {
+      setJsonLD(data);
     });
   }
 
@@ -101,7 +106,11 @@ function App() {
         return place.name.toLowerCase().includes(query.toLowerCase());
       }).splice(page*10, 10));
 
-    });  }
+    });
+    getPlacesJsonLD().then(data => {
+      setJsonLD(data);
+    });
+  }
 
   const cancelSearch = () => {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
@@ -113,7 +122,6 @@ function App() {
   const handleChangePage = (event) => {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setPage(event.target.value);
-    setNbPages(Math.ceil(filteredPlaces.length / 10));
     setPlacesList([...filteredPlaces].splice(event.target.value*10, 10));
   };
 
@@ -126,6 +134,9 @@ function App() {
       setPage(0);
       setPlacesList([...data].splice(0, 10));
     });
+    getPlacesJsonLD().then(data => {
+      setJsonLD(data);
+    });
   };
 
   const handleChangeSort = (event) => {
@@ -136,6 +147,9 @@ function App() {
       setFilteredPlaces([...data]);
       setPage(0);
       setPlacesList([...data].splice(0, 10));
+    });
+    getPlacesJsonLD().then(data => {
+      setJsonLD(data);
     });
   };
 
@@ -161,9 +175,10 @@ function App() {
 
   function placeInfo(place) {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
+    console.log(place);
     return (
     <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
-    <p>Adresse: {place.adresse}, Note: {place.rating}`</p>
+    <p>Adresse: {place.adresse}, Note: {place.rating}</p>
     {displayWeather(place)}
     </div>
     );
@@ -251,6 +266,7 @@ function App() {
   return (
     {isLoaded} ? (
     <div className="App">
+      <script type="application/ld+json"> {jsonLD}</script>
       { !route ? (
       <div style={{width:'30vw', height:'100vh', overflow:'auto'}}>
         <Paper>
@@ -313,7 +329,7 @@ function App() {
           <List className='place-list'>
           {placesList.map(place => (
             <ListItemButton key={place.place_id} className='info' onClick={() => handleClick(place)}>
-              <ListItemText key={place.place_id + 'name'} primary={`${place.name}`}/>
+              <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}} key={place.place_id + 'name'} primary={`${place.name}  |  ${place.rating}★`}/>
             { (selectedplace.place_id === place.place_id && !origin) && (
               <ListItemText key={place.place_id + 'description'} primary={'Set as Origin'} onClick={() => handleClickOrigin(place)}/>
             )}

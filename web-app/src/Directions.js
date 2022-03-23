@@ -9,7 +9,7 @@ function getDirections(origin={}, destination={}, mode="walking") {
             origin: `place_id:${origin.place_id}`,
             destination: `place_id:${destination.place_id}`,
             mode: mode,
-            key: "AIzaSyA2CXzg9NRsFQMaQXz7qqH7NLoXo-pCPyo"
+            key: process.env.REACT_APP_MAPS_API_KEY
         },
         // add key
     }

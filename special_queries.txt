@@ -3,59 +3,64 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ns: <http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#>
+PREFIX fi: <http://schema.onki.fi/poi#>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 
-#DESCRIBE ?x ?address WHERE {
+#DESCRIBE ?x WHERE {
 #  ?x ns:name "Les Bacchantes" .
-#  ?x ns:hasAddress ?address_class .
-#  ?address_class ns:formatted_address ?address .
 #}
 
-#ASK { 
-#  ?a ns:postal_code  75003 .
-#  ?a ns:isAddressOf ?restau .
-#  ?restau ns:rating_score ?score .
+#ASK {
+#  ?x rdf:type ?type .
+#  ?type rdfs:subClassOf* fi:PointOfInterest .
+#  ?x fi:address ?adresseClass .
+#  ?adresseClass ns:postal_code ?code .
+#  ?x ns:rating_score ?score .
+#  FILTER(?code = 75001)
 #  FILTER(?score > 4.5)
 #}
 
 #SELECT ?place_id ?name ?score ?address ?lat ?lng ?postal_code
-#WHERE {  
+#WHERE {
 #  OPTIONAL {
+#    ?p rdf:type ?type .
+#  	?type rdfs:subClassOf* fi:PointOfInterest .
 #    ?p ns:rating_score ?score .
-#    FILTER(?score > 6) .
 #    ?p ns:place_id ?place_id .
 #    ?p ns:name ?name .
-#    ?p ns:place_id ?place_id .
-#    ?p ns:hasAddress ?address_class .
-#    ?address_class ns:postal_code 75003 .
-#    ?address_class ns:lat ?lat .
-#    ?address_class ns:lng ?lng .
+#    ?p geo:lat ?lat .
+#  	?p geo:long ?lng .
+#    ?p fi:address ?address_class .
 #    ?address_class ns:formatted_address ?address .
 #    ?address_class ns:postal_code ?postal_code .
+#    FILTER(?score > 4)
+#    FILTER(?postal_code = 75003)
 #  } .
 #  
 #  OPTIONAL {
+#    ?p rdf:type ?type .
+#  	?type rdfs:subClassOf* fi:PointOfInterest .
 #    ?p ns:rating_score ?score .
-#    FILTER(?score > 4) .
 #    ?p ns:place_id ?place_id .
 #    ?p ns:name ?name .
-#    ?p ns:place_id ?place_id .
-#    ?p ns:hasAddress ?address_class .
-#    ?address_class ns:postal_code 75001 .
-#    ?address_class ns:lat ?lat .
-#    ?address_class ns:lng ?lng .
+#    ?p geo:lat ?lat .
+#  	?p geo:long ?lng .
+#    ?p fi:address ?address_class .
 #    ?address_class ns:formatted_address ?address .
 #    ?address_class ns:postal_code ?postal_code .
+#    FILTER(?score > 4)
+#    FILTER(?postal_code = 75001)
 #  } .
 #}
 
-
-CONSTRUCT {?p ns:descrition ?description}
-WHERE {
-	?p ns:name ?name .
-    ?p ns:rating_score ?score .
-  	?p ns:user_ratings_total ?nbr_ratings .
-  	?p ns:hasAddress ?address_class .
-  	?address_class ns:formatted_address ?address .
-#    BIND(concat(?name, ", ",?address) AS ?description)
-  BIND(concat(?name, ", ",?address, " rated ", STR(?score), "/5 by ", STR(?nbr_ratings), " users.") AS ?description)
-}
+#CONSTRUCT {?p ns:descrition ?description}
+#WHERE {
+#    ?p rdf:type ?type .
+#  	?type rdfs:subClassOf* fi:PointOfInterest .
+#	?p ns:name ?name .
+#    ?p ns:rating_score ?score .
+#  	?p ns:user_ratings_total ?nbr_ratings .
+#  	?p fi:address ?address_class .
+#  	?address_class ns:formatted_address ?address .
+#  	BIND(concat(?name, ", ",?address, " rated ", STR(?score), "/5 by ", STR(?nbr_ratings), " users.") AS ?description)
+#}

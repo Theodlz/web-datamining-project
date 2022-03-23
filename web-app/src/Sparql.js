@@ -64,11 +64,8 @@ function getPlaces(type="All", sorting="", page, nbByPage) {
       default:
         break;
     }
-    console.log(query);
-    d3.sparql(endpoint, query).then(function(data) {
-        console.log(data);
-      })
     return d3.sparql(endpoint, query).then(function(data) {
+      console.log(data)
         if (nbByPage && page) {
           return data.splice(page*nbByPage, nbByPage);
         } else {

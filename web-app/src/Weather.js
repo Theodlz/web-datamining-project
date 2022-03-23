@@ -3,10 +3,10 @@ const Axios = require('axios');
 async function getLocationKey(place){
     var config = {
         method: 'get',
-        url: 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search',
+        url: 'http://localhost:3000/locations/v1/cities/geoposition/search',
         params: {
             q: `${place.lat},${place.lng}`,
-            apikey: "P2bDAAzpWklJSfGxoDRXBAVCcWC64IGN"
+            apikey: process.env.REACT_APP_WEATHER_KEY
         }
     }
     return Axios(config).then(function (response) {
@@ -23,9 +23,9 @@ async function getWeather(place) {
     return getLocationKey(place).then(function (response) {
         var config = {
             method: 'get',
-            url: `http://dataservice.accuweather.com/currentconditions/v1/${response.Key}`,
+            url: `http://localhost:3000/currentconditions/v1/${response.Key}`,
             params: {
-                apikey: "P2bDAAzpWklJSfGxoDRXBAVCcWC64IGN",
+                apikey: process.env.REACT_APP_WEATHER_KEY,
                 details: false,
                 metric: true
             }

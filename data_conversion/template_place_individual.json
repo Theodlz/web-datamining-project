@@ -1,31 +1,34 @@
 {
-    "@id" : "",
-    "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#business_status" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasAddress" : [ {
-      "@id" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours" : [ {
-      "@id" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#name" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#place_id" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#price_level" : [ {
-      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating_score" : [ {
-      "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#user_ratings_total" : [ {
-      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
-      "@value" : ""
-    } ]
-  }
+  "@id" : "",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://schema.onki.fi/poi#address" : [ {
+    "@id" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#hasOpeningHours" : [ {
+    "@id" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#name" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#place_id" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#price_level" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#int",
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#rating_score" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#user_ratings_total" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#int",
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2003/01/geo/wgs84_pos#lat" : [ {
+    "@value" : "48.25"
+  } ],
+  "http://www.w3.org/2003/01/geo/wgs84_pos#long" : [ {
+    "@value" : "2.3"
+  } ]
+}

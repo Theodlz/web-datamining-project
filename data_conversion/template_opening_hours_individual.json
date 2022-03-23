@@ -1,28 +1,28 @@
 {
-    "@id" : "",
-    "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours" ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf" : [ {
-        "@id" : ""
-      } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#sunday" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#monday" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#tuesday" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#wednesday" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#thursday" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#friday" : [ {
-      "@value" : ""
-    } ],
-    "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#saturday" : [ {
-      "@value" : ""
-    } ]
-  }
+  "@id" : "",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Opening_hours" ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#friday" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#isOpeningHoursOf" : [ {
+    "@id" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#monday" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#saturday" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#sunday" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#thursday" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#tuesday" : [ {
+    "@value" : ""
+  } ],
+  "http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#wednesday" : [ {
+    "@value" : ""
+  } ]
+}

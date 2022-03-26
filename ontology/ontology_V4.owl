@@ -86,6 +86,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#travelMadeBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#travelMadeBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#traveled"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Travel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Traveler"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#traveled -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#traveled">
@@ -443,6 +453,27 @@
     <!-- http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Travel -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Travel">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#travelMadeBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Traveler"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#arrived_at"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://schema.onki.fi/poi#PlaceOfInterest"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#departed_from"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://schema.onki.fi/poi#PlaceOfInterest"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/paulm/ontologies/2022/2/Final_project_restaurants#Traveler"/>
     </owl:Class>
     

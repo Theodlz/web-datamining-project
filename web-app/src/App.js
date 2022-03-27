@@ -524,7 +524,7 @@ function App() {
                     <ListItemText style= {{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", margin:'5px'}}
                     key={route.id + 'name'}
                     primary={`Left at ${new Date(route.departure_time).toLocaleString()} from ${route.origin_name} to arrive to ${route.destination_name} at ${new Date(route.arrival_time).toLocaleString()}`}
-                    secondary={`Details: Origin Address:${route.origin_address}, Destination Address:${route.destination_address}`}
+                    secondary={`Details: Origin Address: ${route.origin_address}, Destination Address: ${route.destination_address}`}
                     />
                     </ListItem>
                 ))}

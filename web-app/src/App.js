@@ -522,9 +522,9 @@ function App() {
             <List className='traveler-routes'>
                 {currentTravelerRoutes.map(route => (
                   <ListItem key={route.id} className='info'>
-                    <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}}
+                    <ListItemText style= {{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", margin:'5px'}}
                     key={route.id + 'name'}
-                    primary={`Left at ${route.departure_time} from ${route.origin_name} to arrive to ${route.destination_name} at ${route.arrival_time}`}
+                    primary={`Left at ${new Date(route.departure_time).toLocaleString()} from ${route.origin_name} to arrive to ${route.destination_name} at ${new Date(route.arrival_time).toLocaleString()}`}
                     secondary={`Details: Origin Address:${route.origin_address}, Destination Address:${route.destination_address}`}
                     />
                     </ListItem>
@@ -532,7 +532,7 @@ function App() {
               </List>
               ) :
               <div>
-                <p> /!\ Click on a traveler to see his routes</p>
+                <h4> /!\ Click on a traveler to see his routes</h4>
               </div>
                }
             </Paper>

@@ -2,7 +2,7 @@ const d3  = require('d3-sparql')
 const Axios = require('axios');
 const jsonld = require('jsonld');
 
-const endpoint = 'http://localhost:21500/poiparis3/sparql'
+const endpoint = 'http://localhost:3030/poiparis/sparql'
 
 function getPlaces(type="All", sorting="", page, nbByPage) {
     let query = `

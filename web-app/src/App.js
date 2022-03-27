@@ -24,7 +24,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import formatStringToHtml from 'format-string-to-html'
 import placeLogo from './data/restaurant.svg';
-import {getPlaces, getPlacesJsonLD} from './Sparql.js';
+import {getPlaces, getPlacesJsonLD, getTravelers, getTravelerRoutes, getTravelersAndRoutesJsonLD} from './Sparql.js';
 
 import {getDirections} from './Directions.js';
 import {getWeather} from './Weather.js';
@@ -48,6 +48,11 @@ sortings.add('rating asc');
 sortings.add('name desc');
 sortings.add('name asc');
 
+
+const menu = new Set();
+menu.add('Food Places');
+menu.add('Travelers');
+
 function App() {
 
   const [viewport, setViewport] = useState({
@@ -57,6 +62,7 @@ function App() {
     longitude: 2.3522,
     zoom: 15
   });
+  const [currentMenu, setCurrentMenu] = useState('Food Places');
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [placesList, setPlacesList] = useState([]);
@@ -75,14 +81,21 @@ function App() {
 
   const [weather, setWeather] = useState(null);
 
+
+
+
+  const [travelersList, setTravelersList] = useState([]);
+
+  const [currentTravelerRoutes, setCurrentTravelerRoutes] = useState(null);
+
   const [jsonLD, setJsonLD] = useState(null);
 
 
   if (isLoading) {
     setIsLoading(false);
     getPlaces().then(data => {
-      setPlacesList([...data].splice(0,10));
-      setNbPages(Math.ceil(data.length / 10));
+      setPlacesList([...data].splice(0,12));
+      setNbPages(Math.ceil(data.length / 12));
       setFilteredPlaces(data);
       getWeather({lat: 48.8566, lng: 2.3522}).then(data => {
         setWeather(data);
@@ -92,22 +105,25 @@ function App() {
     getPlacesJsonLD().then(data => {
       setJsonLD(data);
     });
+    getTravelers().then(data => {
+      setTravelersList(data);
+    });
   }
 
   const requestSearch = (query) => {
   // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
-    getPlaces(type).then(data => {
+    getPlaces(type, sorting).then(data => {
       setPage(0);
-      setNbPages(Math.ceil(data.length / 10));
+      setNbPages(Math.ceil(data.length / 12));
       setFilteredPlaces([...data].filter((place) => {
         return place.name.toLowerCase().includes(query.toLowerCase());
       }));
       setPlacesList([...data].filter((place) => {
         return place.name.toLowerCase().includes(query.toLowerCase());
-      }).splice(page*10, 10));
+      }).splice(page*12, 12));
 
     });
-    getPlacesJsonLD().then(data => {
+    getPlacesJsonLD(type, sorting).then(data => {
       setJsonLD(data);
     });
   }
@@ -122,19 +138,19 @@ function App() {
   const handleChangePage = (event) => {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setPage(event.target.value);
-    setPlacesList([...filteredPlaces].splice(event.target.value*10, 10));
+    setPlacesList([...filteredPlaces].splice(event.target.value*12, 12));
   };
 
   const handleChangeType = (event) => {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setType(event.target.value);
     getPlaces(event.target.value, sorting).then(data => {
-      setNbPages(Math.ceil(data.length / 10));
+      setNbPages(Math.ceil(data.length / 12));
       setFilteredPlaces([...data]);
       setPage(0);
-      setPlacesList([...data].splice(0, 10));
+      setPlacesList([...data].splice(0, 12));
     });
-    getPlacesJsonLD().then(data => {
+    getPlacesJsonLD(event.target.value, sorting).then(data => {
       setJsonLD(data);
     });
   };
@@ -143,12 +159,12 @@ function App() {
     // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
     setSorting(event.target.value);
     getPlaces(type, event.target.value).then(data => {
-      setNbPages(Math.ceil(data.length / 10));
+      setNbPages(Math.ceil(data.length / 12));
       setFilteredPlaces([...data]);
       setPage(0);
-      setPlacesList([...data].splice(0, 10));
+      setPlacesList([...data].splice(0, 12));
     });
-    getPlacesJsonLD().then(data => {
+    getPlacesJsonLD(type, event.target.value).then(data => {
       setJsonLD(data);
     });
   };
@@ -263,148 +279,267 @@ function App() {
       </div>
     );
   }
+
+  function downloadButton() {
+    return (
+      <Button
+            href={`data:text/json;charset=utf-8,${encodeURIComponent(
+              jsonLD
+            )}`}
+            download="sparql_results.jsonld"
+          >
+            {`Download JsonLD`}
+      </Button>
+    )
+  };
+
+  function handleClickTraveler(traveler) {
+    getTravelerRoutes(traveler.name).then(data => {
+      setCurrentTravelerRoutes(data);
+    });
+  }
+
+  const handleChangeMenu = (event) => {
+    // ALL THIS TO BE REPLACED WITH SPARQL QUERIES
+    setCurrentMenu(event.target.value);
+    if (event.target.value === "Travelers") {
+      getTravelersAndRoutesJsonLD().then(data => {
+        setJsonLD(data);
+      });
+    } else {
+      getPlacesJsonLD(type, sorting).then(data => {
+        setJsonLD(data);
+      });
+    }
+  };
+
   return (
     {isLoaded} ? (
     <div className="App">
-      <script type="application/ld+json"> {jsonLD}</script>
-      { !route ? (
-      <div style={{width:'30vw', height:'100vh', overflow:'auto'}}>
-        <Paper>
-          <div className='list-header'>
-            <h1>Food Places</h1>
-            <div className='page-control'>
-              <InputLabel id="page-label">Page</InputLabel>
-              <Select
-                labelId="page-label"
-                id="page-select"
-                value={page}
-                label="Page"
-                onChange={handleChangePage}
-                >
-                {
-                  Array.from(Array(nbPages).keys()).map(page => (
-                    <MenuItem key={page} value={page}>{page+1}</MenuItem>
-                  ))
-                }
-              </Select>
-            </div>
-            <div className='type-control'>
-              <InputLabel id="type-label">Type</InputLabel>
-              <Select
-                labelId="type-label"
-                id="type-select"
-                value={type}
-                label="Type"
-                onChange={handleChangeType}
-                >
-                {
-                  Array.from(types).map(type => (
-                    <MenuItem key={type} value={type}>{type}</MenuItem>
-                  ))
-                }
-              </Select>
-            </div>
-            <div className='sorting-control'>
-              <InputLabel id="sorting-label">Sort</InputLabel>
-              <Select
-                labelId="sorting-label"
-                id="sorting-select"
-                value={sorting}
-                label="Sort"
-                onChange={handleChangeSort}
-                >
-                {
-                  Array.from(sortings).map(type => (
-                    <MenuItem key={type} value={type}>{type}</MenuItem>
-                  ))
-                }
-              </Select>
-            </div>
-          </div>
-          <SearchBar
-          value={searched}
-          onChange={(searchVal) => requestSearch(searchVal)}
-          onCancelSearch={() => cancelSearch()}
-          />
-          <List className='place-list'>
-          {placesList.map(place => (
-            <ListItemButton key={place.place_id} className='info' onClick={() => handleClick(place)}>
-              <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}} key={place.place_id + 'name'} primary={`${place.name}  |  ${place.rating}★`}/>
-            { (selectedplace.place_id === place.place_id && !origin) && (
-              <ListItemText key={place.place_id + 'description'} primary={'Set as Origin'} onClick={() => handleClickOrigin(place)}/>
-            )}
-            { (selectedplace.place_id === place.place_id && !destination && origin) && (
-              <ListItemText key={place.place_id + 'description'} primary={'Set as Destination'} onClick={() => handleClickDestination(place)}/>
-            )}
-            </ListItemButton>
-          ))}
-        </List>
-      </Paper>
-      
-      </div>
-      ) : (
+      { currentMenu === 'Food Places' && (
+      <div className="App">
+        { !route ? (
         <div style={{width:'30vw', height:'100vh', overflow:'auto'}}>
           <Paper>
-            <div className='route-header'>
-              <Button>
-                <ArrowBackIcon onClick={() => handleStopRoute()}/>
-              </Button>
-              </div>
-            <div className='route-info'>
-              {routeInfo(origin, destination)}
-              </div>
-          </Paper>
-          </div>
-      )}
-      <div style={{width:'70vw', height:'100vh'}}>
-        {(viewport) ? (
-        <ReactMapGL
-          initialViewState={viewport}
-          mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
-          onViewportChange={(viewport) => {
-            setViewport(viewport);
-          }}
-          >
-          <div style={{width:'100vw', height:'100vh'}}>
-            {filteredPlaces.map(place => (
-              <div key={place.place_id}>
-                  <Marker
-                    latitude={place.lat}
-                    longitude={place.lng}
+            <div className='list-header'>
+            <div className='menu-control'>
+                <InputLabel id="menu-label">Menu</InputLabel>
+                <Select
+                  labelId="menu-label"
+                  id="menu-select"
+                  value={currentMenu}
+                  label="Menu"
+                  onChange={handleChangeMenu}
                   >
-                  <p
-                  role='img'
-                  onClick={() => handleClick(place)}
-                  className="cursor-pointer text-2xl animate-bounce"
-                  aria-label='push-pin'
-                  >📍</p>
-                  </Marker>
-                  { selectedplace.place_id === place.place_id ? (
-                    <Popup
+                  {
+                    Array.from(menu).map(item => (
+                      <MenuItem key={item} value={item}>{item}</MenuItem>
+                    ))
+                  }
+                </Select>
+              </div>
+              <div className='page-control'>
+                <InputLabel id="page-label">Page</InputLabel>
+                <Select
+                  labelId="page-label"
+                  id="page-select"
+                  value={page}
+                  label="Page"
+                  onChange={handleChangePage}
+                  >
+                  {
+                    Array.from(Array(nbPages).keys()).map(page => (
+                      <MenuItem key={page} value={page}>{page+1}</MenuItem>
+                    ))
+                  }
+                </Select>
+              </div>
+              <div className='type-control'>
+                <InputLabel id="type-label">Type</InputLabel>
+                <Select
+                  labelId="type-label"
+                  id="type-select"
+                  value={type}
+                  label="Type"
+                  onChange={handleChangeType}
+                  >
+                  {
+                    Array.from(types).map(type => (
+                      <MenuItem key={type} value={type}>{type}</MenuItem>
+                    ))
+                  }
+                </Select>
+              </div>
+              <div className='sorting-control'>
+                <InputLabel id="sorting-label">Sort</InputLabel>
+                <Select
+                  labelId="sorting-label"
+                  id="sorting-select"
+                  value={sorting}
+                  label="Sort"
+                  onChange={handleChangeSort}
+                  >
+                  {
+                    Array.from(sortings).map(type => (
+                      <MenuItem key={type} value={type}>{type}</MenuItem>
+                    ))
+                  }
+                </Select>
+              </div>
+            </div>
+            <SearchBar
+            value={searched}
+            onChange={(searchVal) => requestSearch(searchVal)}
+            onCancelSearch={() => cancelSearch()}
+            />
+            <List className='place-list'>
+            {placesList.map(place => (
+              <ListItemButton key={place.place_id} className='info' onClick={() => handleClick(place)}>
+                <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}} key={place.place_id + 'name'} primary={`${place.name}  |  ${place.rating}★`}/>
+              { (selectedplace.place_id === place.place_id && !origin) && (
+                <ListItemText key={place.place_id + 'description'} primary={'Set as Origin'} onClick={() => handleClickOrigin(place)}/>
+              )}
+              { (selectedplace.place_id === place.place_id && !destination && origin) && (
+                <ListItemText key={place.place_id + 'description'} primary={'Set as Destination'} onClick={() => handleClickDestination(place)}/>
+              )}
+              </ListItemButton>
+            ))}
+          </List>
+        </Paper>
+        <Paper>
+          {jsonLD && downloadButton()}
+        </Paper>
+        
+        </div>
+        ) : (
+          <div style={{width:'30vw', height:'100vh', overflow:'auto'}}>
+            <Paper>
+              <div className='route-header'>
+                <Button>
+                  <ArrowBackIcon onClick={() => handleStopRoute()}/>
+                </Button>
+                </div>
+              <div className='route-info'>
+                {routeInfo(origin, destination)}
+                </div>
+            </Paper>
+            </div>
+        )}
+        <div style={{width:'70vw', height:'100vh'}}>
+          {(viewport) ? (
+          <ReactMapGL
+            initialViewState={viewport}
+            mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            mapStyle="mapbox://styles/mapbox/streets-v9"
+            onViewportChange={(viewport) => {
+              setViewport(viewport);
+            }}
+            >
+            <div style={{width:'100vw', height:'100vh'}}>
+              {filteredPlaces.map(place => (
+                <div key={place.place_id}>
+                    <Marker
                       latitude={place.lat}
                       longitude={place.lng}
-                      closeOnClick={false}
-                      onClose={() => handleClickClose()}
-                      onOpen={() => handleClick(place)}
-                      >
-                        <div className='popup'>
-                          <h2>{place.name}</h2>
-                          {placeInfo(place)}
-                        </div>
+                    >
+                    <p
+                    role='img'
+                    onClick={() => handleClick(place)}
+                    className="cursor-pointer text-2xl animate-bounce"
+                    aria-label='push-pin'
+                    >📍</p>
+                    </Marker>
+                    { selectedplace.place_id === place.place_id ? (
+                      <Popup
+                        latitude={place.lat}
+                        longitude={place.lng}
+                        closeOnClick={false}
+                        onClose={() => handleClickClose()}
+                        onOpen={() => handleClick(place)}
+                        >
+                          <div className='popup'>
+                            <h2>{place.name}</h2>
+                            {placeInfo(place)}
+                          </div>
 
-                      </Popup>
-                  ) : null}
-                      
-                </div>
+                        </Popup>
+                    ) : null}
+                        
+                  </div>
+
+              ))}
                 
-
-            ))}
-              
-          </div>
-        </ReactMapGL>
-        ) : null}
+            </div>
+          </ReactMapGL>
+          ) : null}
+        </div>
       </div>
+      )}
+      { currentMenu === 'Travelers' && (
+        <div className="App">
+          <div style={{width:'30vw', height:'100vh', overflow:'auto'}}>
+            <Paper>
+              <div className='list-header'>
+              <div className='menu-control'>
+                <InputLabel id="menu-label">Menu</InputLabel>
+                <Select
+                  labelId="menu-label"
+                  id="menu-select"
+                  value={currentMenu}
+                  label="Menu"
+                  onChange={handleChangeMenu}
+                  >
+                  {
+                    Array.from(menu).map(item => (
+                      <MenuItem key={item} value={item}>{item}</MenuItem>
+                    ))
+                  }
+                </Select>
+              </div>
+              </div>
+              <List className='traveler-list'>
+                {travelersList.map(traveler => (
+                  <ListItem key={traveler.id} className='info' onClick={() => handleClickTraveler(traveler)}>
+                    <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}}
+                    key={traveler.id + 'name'}
+                    primary={`${traveler.name}`}
+                    onClick={() => handleClickTraveler(traveler)}
+                    />
+                    </ListItem>
+                ))}
+              </List>
+            </Paper>
+            <Paper>
+          {jsonLD && downloadButton()}
+            </Paper>
+            </div>
+            <div style={{width:'70vw', height:'100vh'}}>
+            <Paper>
+            <div className='list-header'>
+                <h1>Traveler's Routes</h1>
+              </div>
+              { currentTravelerRoutes ? (
+            <List className='traveler-routes'>
+                {currentTravelerRoutes.map(route => (
+                  <ListItem key={route.id} className='info'>
+                    <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}}
+                    key={route.id + 'name'}
+                    primary={`Left at ${route.departure_time} from ${route.origin_name} to arrive to ${route.destination_name} at ${route.arrival_time}`}
+                    secondary={`Details: Origin Address:${route.origin_address}, Destination Address:${route.destination_address}`}
+                    />
+                    </ListItem>
+                ))}
+              </List>
+              ) :
+              <div>
+                <p> /!\ Click on a traveler to see his routes</p>
+              </div>
+               }
+            </Paper>
+          </div>
+
+        </div>
+      )}
     </div>
     ) : (
       <div>Loading...</div>

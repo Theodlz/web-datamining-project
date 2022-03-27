@@ -499,13 +499,12 @@ function App() {
               </div>
               <List className='traveler-list'>
                 {travelersList.map(traveler => (
-                  <ListItem key={traveler.id} className='info' onClick={() => handleClickTraveler(traveler)}>
+                  <ListItemButton key={traveler.id} className='info' onClick={() => handleClickTraveler(traveler)}>
                     <ListItemText style= {{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", margin:'5px'}}
                     key={traveler.id + 'name'}
                     primary={`${traveler.name}`}
-                    onClick={() => handleClickTraveler(traveler)}
                     />
-                    </ListItem>
+                    </ListItemButton>
                 ))}
               </List>
             </Paper>
